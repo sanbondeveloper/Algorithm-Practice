@@ -4,3 +4,9 @@ const input = require('fs')
   .toString()
   .trim()
   .split('\n');
+
+const [N, ...arr] = input;
+
+arr.sort((a, b) => a - b);
+
+console.log(arr.join('\n'));
