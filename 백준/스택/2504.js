@@ -56,3 +56,9 @@ for (let i = 0; i < str.length; i++) {
 if (stack.length !== 0) answer = 0;
 
 console.log(answer);
+
+/*
+ 분배법칙을 이용해서 구현한다.
+ 여는 괄호가 나올 때 곱셈을 수행한다.
+ 닫히는 괄호가 나올 때 이전 문자열에 따라 정답에 더해줄지를 결정한다.
+*/
