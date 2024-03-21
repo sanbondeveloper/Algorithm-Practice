@@ -60,3 +60,33 @@ const input = require('fs')
   .toString()
   .trim()
   .split('\n');
+const N = +input[0];
+const M = +input[1];
+const arr = input[2].split(' ').map(Number);
+const queue = new Queue();
+const visited = Array(N + 1).fill(-1);
+let answer = 0;
+
+for (let i = 0; i < M; i++) {
+  queue.insert(arr[i]);
+  visited[arr[i]] = 0;
+}
+
+const bfs = () => {
+  while (!queue.isEmpty()) {
+    const now = queue.peekFront();
+    queue.remove();
+
+    for (let i = 0; i < 20; i++) {
+      const next = now ^ (1 << i);
+
+      if (N < next || visited[next] !== -1) continue;
+      visited[next] = visited[now] + 1;
+      queue.insert(next);
+      answer = Math.max(answer, visited[next]);
+    }
+  }
+};
+
+bfs();
+console.log(answer);
