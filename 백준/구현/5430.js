@@ -46,8 +46,3 @@ while (true) {
 }
 
 console.log(answer.join('\n'));
-
-/*
-  reverse 함수 사용시 시간 초과가 발생
-  -> isReverse 사용으로 해결
-*/
