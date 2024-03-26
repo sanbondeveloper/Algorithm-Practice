@@ -46,3 +46,10 @@ while (true) {
 }
 
 console.log(answer.join('\n'));
+
+/*
+  reverse 함수 사용시 시간 초과가 발생
+  -> isReverse 사용으로 해결
+
+  테스트 케이스(T) * 명령 횟수(P) = 약 천만
+*/
