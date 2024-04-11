@@ -5,39 +5,38 @@ const input = require('fs')
   .trim()
   .split('\n');
 
-const [str, ...rest] = input;
-const [N, C] = str.split(' ').map(Number);
-const arr = rest.map(Number).sort((a, b) => a - b);
+const [N, C] = input[0].split(' ').map(Number);
+const arr = input.slice(1).map(Number);
 
-function check(distance) {
-  let count = C - 1;
-  let prev = arr[0];
-
-  for (let i = 1; i < arr.length; i++) {
-    if (arr[i] - prev >= distance) {
-      count -= 1;
-      prev = arr[i];
-    }
-  }
-
-  return count <= 0;
-}
+arr.sort((a, b) => a - b);
 
 let left = 1;
-let right = arr[arr.length - 1];
+let right = arr[N - 1] - arr[0];
+let answer = 0;
 
 while (left <= right) {
-  const mid = Math.floor((left + right) / 2);
+  let mid = Math.floor((left + right) / 2);
 
   if (check(mid)) {
+    answer = Math.max(answer, mid);
     left = mid + 1;
   } else {
     right = mid - 1;
   }
 }
 
-console.log(right);
+console.log(answer);
 
-/*
-  거리를 가지고 이분탐색을 수행한다. 이때 mid는 인접한 최대 거리로 다른 공유기 사이의 거리는 이것보다 크다. 
-*/
+function check(dist) {
+  let prev = arr[0];
+  let cnt = 1;
+
+  for (let i = 1; i < N; i++) {
+    if (arr[i] - prev >= dist) {
+      cnt += 1;
+      prev = arr[i];
+    }
+  }
+
+  return cnt >= C;
+}
