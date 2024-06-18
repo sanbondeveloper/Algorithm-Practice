@@ -19,6 +19,7 @@ class Queue {
   isEmpty() {
     return this.front == null && this.rear === null;
   }
+
   insert(data) {
     const newNode = new Node(data);
     if (this.isEmpty()) this.front = newNode;

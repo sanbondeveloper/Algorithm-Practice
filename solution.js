@@ -5,16 +5,8 @@
 //   .trim()
 //   .split('\n');
 
-var value = 1;
+if (true) {
+  var a = 1;
+}
 
-var obj = {
-  value: 100,
-  foo: function () {
-    setTimeout(function () {
-      console.log("callback's this: ", this); // window
-      console.log("callback's this.value: ", this.value); // 1
-    }, 100);
-  },
-};
-
-obj.foo();
+console.log(a);
